@@ -1,13 +1,15 @@
 # DeutschLens
 
 > **Learn German gender naturally — just by reading the web.**
-> 독일어 명사 성별 시각화 및 스마트 단어장 Chrome 확장 프로그램
+
+독일어 명사 성별 시각화 및 스마트 단어장 Chrome 확장 프로그램
 
 <br>
 
 ## Overview
 
 독일어 학습의 가장 큰 장벽 중 하나는 **명사의 성별(der / die / das)** 입니다.
+
 DeutschLens는 웹 페이지를 읽는 것만으로도 성별이 자연스럽게 눈에 들어오도록 돕고,
 읽기 흐름을 방해하지 않는 클릭 팝업으로 사전을 대체합니다.
 
@@ -195,4 +197,3 @@ Issues와 Pull Requests 환영합니다.
   Made for German learners who hate looking up dictionaries.<br>
   <i>Viel Erfolg beim Deutschlernen! 🇩🇪</i>
 </p>
-"# DeutschLens" 
