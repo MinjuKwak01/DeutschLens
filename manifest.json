@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "DeutschLens",
+  "version": "1.0.0",
+  "description": "독일어 학습 도우미 — 명사 성별 컬러링, 클릭 단어 팝업, 나만의 단어장",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://en.wiktionary.org/*",
+    "https://api.mymemory.translated.net/*"
+  ],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/nounDict.js", "js/wiktionary.js", "js/content.js"],
+      "css": ["css/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16":  "icons/icon16.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "html/popup.html",
+    "default_title": "DeutschLens",
+    "default_icon": {
+      "16":  "icons/icon16.png",
+      "48":  "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["html/wordlist.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

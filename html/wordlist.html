@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>나의 단어장 — DeutschLens</title>
+  <link rel="stylesheet" href="../css/wordlist.css" />
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="wl-header">
+    <div class="wl-header-left">
+      <span class="wl-logo">🇩🇪</span>
+      <div>
+        <h1 class="wl-title">나의 단어장</h1>
+        <p class="wl-subtitle">DeutschLens</p>
+      </div>
+    </div>
+    <div class="wl-header-right">
+      <div class="wl-search-wrap">
+        <input type="text" id="search-input" class="wl-search" placeholder="🔍  단어 검색..." />
+      </div>
+      <button class="btn-export" id="btn-export" title="CSV로 내보내기">
+        ↓ 내보내기
+      </button>
+      <button class="btn-clear-all" id="btn-clear-all" title="전체 삭제">
+        🗑 전체 삭제
+      </button>
+    </div>
+  </header>
+
+  <!-- 통계 바 -->
+  <div class="wl-stats" id="wl-stats">
+    <span class="stat-badge" id="stat-total">0개 저장됨</span>
+  </div>
+
+  <!-- 단어 목록 -->
+  <main class="wl-main">
+    <div id="wl-list" class="wl-list">
+      <!-- 동적으로 채워짐 -->
+    </div>
+    <!-- 빈 상태 -->
+    <div id="wl-empty" class="wl-empty" style="display:none">
+      <div class="wl-empty-icon">📖</div>
+      <h2>아직 저장된 단어가 없습니다</h2>
+      <p>독일어 웹페이지에서 단어를 더블클릭하거나 드래그한 후<br>
+         팝업의 <strong>☆ 버튼</strong>을 눌러 저장하세요.</p>
+    </div>
+    <!-- 검색 결과 없음 -->
+    <div id="wl-no-results" class="wl-empty" style="display:none">
+      <div class="wl-empty-icon">🔍</div>
+      <p>검색 결과가 없습니다.</p>
+    </div>
+  </main>
+
+  <script src="../js/wordlist.js"></script>
+</body>
+</html>

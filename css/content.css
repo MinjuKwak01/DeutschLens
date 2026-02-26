@@ -1,0 +1,228 @@
+/* content.css - DeutschLens 콘텐츠 스크립트 스타일 */
+
+/* ── 명사 성별 하이라이팅 ──────────────────────────────────────── */
+
+.dc-noun {
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+}
+
+/* 남성 (der) — 파란색 */
+.dc-masc {
+  border-bottom-color: #2563eb;
+}
+.dc-masc:hover {
+  background-color: rgba(37, 99, 235, 0.12);
+}
+
+/* 여성 (die) — 빨간색 */
+.dc-fem {
+  border-bottom-color: #dc2626;
+}
+.dc-fem:hover {
+  background-color: rgba(220, 38, 38, 0.12);
+}
+
+/* 중성 (das) — 초록색 */
+.dc-neut {
+  border-bottom-color: #16a34a;
+}
+.dc-neut:hover {
+  background-color: rgba(22, 163, 74, 0.12);
+}
+
+/* ── 팝업 ──────────────────────────────────────────────────────── */
+
+#dc-popup {
+  position: absolute;
+  z-index: 2147483646;
+  width: 290px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue',
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #1e293b;
+  overflow: hidden;
+  animation: dc-popup-in 0.15s ease;
+}
+
+@keyframes dc-popup-in {
+  from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 헤더 */
+#dc-popup-header {
+  display: flex;
+  align-items: center;
+  padding: 11px 12px 10px;
+  border-bottom: 1px solid #f1f5f9;
+  gap: 7px;
+  background: #f8fafc;
+  border-radius: 12px 12px 0 0;
+}
+
+#dc-popup-word {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 성별 배지 */
+#dc-popup-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.dc-badge-m { background-color: #2563eb; }
+.dc-badge-f { background-color: #dc2626; }
+.dc-badge-n { background-color: #16a34a; }
+
+/* 저장/닫기 버튼 */
+#dc-popup-save,
+#dc-popup-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: #94a3b8;
+  padding: 3px 5px;
+  border-radius: 6px;
+  transition: color 0.12s, background-color 0.12s;
+  line-height: 1;
+  flex-shrink: 0;
+}
+#dc-popup-save:hover { color: #f59e0b; background-color: #fef3c7; }
+#dc-popup-save.dc-saved { color: #f59e0b; }
+#dc-popup-close:hover { color: #ef4444; background-color: #fee2e2; }
+
+/* 로딩 */
+#dc-popup-loading {
+  padding: 18px 14px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 13px;
+}
+#dc-popup-loading::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #e2e8f0;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-left: 6px;
+  animation: dc-spin 0.7s linear infinite;
+}
+@keyframes dc-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 본문 */
+#dc-popup-body {
+  padding: 0;
+}
+
+.dc-section {
+  padding: 9px 13px;
+  border-bottom: 1px solid #f8fafc;
+}
+.dc-section:last-child {
+  border-bottom: none;
+}
+
+.dc-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  margin-bottom: 3px;
+}
+
+.dc-defs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dc-defs li {
+  position: relative;
+  padding-left: 13px;
+  font-size: 13px;
+  color: #334155;
+  margin-bottom: 2px;
+}
+.dc-defs li::before {
+  content: '·';
+  position: absolute;
+  left: 2px;
+  color: #cbd5e1;
+  font-weight: bold;
+}
+
+/* 문법 행 */
+.dc-gram-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.dc-gram-item {
+  display: flex;
+  flex-direction: column;
+}
+.dc-gram-item .dc-label { margin-bottom: 1px; }
+.dc-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* 에러 */
+#dc-popup-error {
+  padding: 14px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* 하단 POS 바 */
+.dc-footer-bar {
+  padding: 6px 13px 8px;
+  display: flex;
+  align-items: center;
+}
+.dc-fallback-note {
+  font-size: 9px;
+  color: #f59e0b;
+  background: #fef3c7;
+  padding: 1px 5px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+.dc-pos-badge {
+  font-size: 10px;
+  color: #94a3b8;
+  background: #f1f5f9;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 500;
+}

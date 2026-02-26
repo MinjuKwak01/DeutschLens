@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeutschLens</title>
+  <link rel="stylesheet" href="../css/popup.css" />
+</head>
+<body>
+  <!-- 헤더 -->
+  <header class="header">
+    <div class="logo">
+      <span class="logo-flag">🇩🇪</span>
+      <span class="logo-text">DeutschLens</span>
+    </div>
+    <label class="toggle-wrap" title="확장 프로그램 켜기/끄기">
+      <input type="checkbox" id="toggle-switch" />
+      <span class="toggle-track">
+        <span class="toggle-thumb"></span>
+      </span>
+      <span class="toggle-label" id="toggle-label">ON</span>
+    </label>
+  </header>
+
+  <!-- 메인 콘텐츠 -->
+  <main class="main">
+
+    <!-- 저장된 단어 수 -->
+    <div class="stat-card">
+      <div class="stat-icon">📚</div>
+      <div class="stat-info">
+        <div class="stat-num" id="word-count">0</div>
+        <div class="stat-desc">저장된 단어</div>
+      </div>
+      <button class="btn-wordlist" id="btn-wordlist">
+        단어장 보기 →
+      </button>
+    </div>
+
+    <!-- 번역 언어 선택 -->
+    <div class="lang-section">
+      <div class="lang-section-label">팝업 번역 언어</div>
+      <div class="lang-tabs">
+        <button class="lang-tab" id="lang-ko" data-lang="ko">🇰🇷 한국어</button>
+        <button class="lang-tab" id="lang-en" data-lang="en">🇬🇧 English</button>
+      </div>
+    </div>
+
+    <!-- 색상 범례 -->
+    <div class="legend">
+      <div class="legend-title">성별 색상 표시</div>
+      <div class="legend-items">
+        <div class="legend-item">
+          <span class="legend-dot dot-m"></span>
+          <span class="legend-der">der</span>
+          <span class="legend-sub">남성</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot dot-f"></span>
+          <span class="legend-der">die</span>
+          <span class="legend-sub">여성</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot dot-n"></span>
+          <span class="legend-der">das</span>
+          <span class="legend-sub">중성</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사용 팁 -->
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text">단어를 <strong>더블클릭</strong>하거나 <strong>드래그</strong>하면 팝업이 열립니다.</span>
+    </div>
+
+  </main>
+</body>
+<script src="../js/popup.js"></script>
+</html>

@@ -1,0 +1,241 @@
+/* popup.css - DeutschLens Toolbar Popup */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: 280px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+/* ── 헤더 ────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 12px;
+  background: linear-gradient(135deg, #1a1a1a 33%, #DD0000 33% 66%, #FFCE00 66%);
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.logo-flag { font-size: 18px; line-height: 1; }
+.logo-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  letter-spacing: -0.01em;
+}
+
+/* ── 토글 스위치 ─────────────────────────────────────────────── */
+
+.toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.toggle-wrap input { display: none; }
+
+.toggle-track {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 11px;
+  transition: background 0.2s;
+}
+.toggle-wrap input:checked + .toggle-track {
+  background: rgba(255,255,255,0.85);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+.toggle-wrap input:checked + .toggle-track .toggle-thumb {
+  transform: translateX(18px);
+  background: #FFCE00;
+}
+
+.toggle-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  min-width: 22px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+/* ── 메인 영역 ──────────────────────────────────────────────── */
+
+.main {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 통계 카드 */
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 11px 13px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.stat-icon { font-size: 22px; flex-shrink: 0; }
+.stat-info { flex: 1; }
+.stat-num {
+  font-size: 22px;
+  font-weight: 800;
+  color: #b8860b;
+  line-height: 1.1;
+}
+.stat-desc {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+.btn-wordlist {
+  background: #fff3c4;
+  color: #7a5500;
+  border: 1px solid #f5d87a;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-wordlist:hover { background: #ffeea0; transform: translateY(-1px); }
+.btn-wordlist:active { transform: translateY(0); }
+
+/* 범례 */
+.legend {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 13px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.legend-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+.legend-items {
+  display: flex;
+  gap: 0;
+  justify-content: space-around;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-direction: row;
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot-m { background: #2563eb; }
+.dot-f { background: #dc2626; }
+.dot-n { background: #16a34a; }
+
+.legend-der {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+}
+.legend-sub {
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+/* 언어 선택 */
+.lang-section {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 13px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.lang-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+.lang-tabs {
+  display: flex;
+  gap: 6px;
+}
+.lang-tab {
+  flex: 1;
+  padding: 6px 0;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.lang-tab:hover { background: #f1f5f9; border-color: #cbd5e1; }
+.lang-tab.active {
+  background: #ffe8e8;
+  border-color: #f5a0a0;
+  color: #9b1c1c;
+  box-shadow: 0 2px 6px rgba(221,0,0,0.15);
+}
+
+/* 팁 */
+.tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  padding: 8px 11px;
+  font-size: 12px;
+  color: #78350f;
+  line-height: 1.45;
+}
+.tip-icon { flex-shrink: 0; font-size: 14px; }
+.tip strong { font-weight: 700; }
+
+/* 비활성화 상태 */
+body.disabled .stat-card,
+body.disabled .legend,
+body.disabled .tip {
+  opacity: 0.5;
+}

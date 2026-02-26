@@ -1,0 +1,292 @@
+/* wordlist.css - DeutschLens 단어장 페이지 */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+  min-height: 100vh;
+}
+
+/* ── 헤더 ────────────────────────────────────────────────────── */
+
+.wl-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #1a1a1a 33%, #DD0000 33% 66%, #FFCE00 66%);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+
+.wl-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.wl-logo { font-size: 30px; }
+.wl-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+.wl-subtitle {
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.wl-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.wl-search-wrap { position: relative; }
+.wl-search {
+  width: 220px;
+  padding: 8px 13px;
+  font-size: 13px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.92);
+  color: #1e293b;
+  outline: none;
+  transition: box-shadow 0.15s;
+}
+.wl-search:focus { box-shadow: 0 0 0 2px #FFCE00; }
+
+.btn-export,
+.btn-clear-all {
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+.btn-export:hover,
+.btn-clear-all:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-export:active,
+.btn-clear-all:active { transform: translateY(0); }
+
+.btn-export {
+  background: rgba(255,255,255,0.92);
+  color: #1e293b;
+}
+.btn-clear-all {
+  background: rgba(220, 38, 38, 0.85);
+  color: white;
+}
+
+/* ── 통계 바 ─────────────────────────────────────────────────── */
+
+.wl-stats {
+  padding: 10px 24px;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+}
+.stat-badge {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* ── 메인 ─────────────────────────────────────────────────────── */
+
+.wl-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 24px 40px;
+}
+
+/* ── 단어 목록 ───────────────────────────────────────────────── */
+
+.wl-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── 단어 카드 ───────────────────────────────────────────────── */
+
+.wl-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid #e2e8f0; /* 성별에 따라 색상 변경 */
+  border-radius: 12px;
+  padding: 13px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.15s, border-left-color 0.15s;
+  animation: wl-card-in 0.18s ease;
+}
+.wl-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+
+/* 성별 좌측 테두리 강조 */
+.wl-card.card-m { border-left-color: #2563eb; }
+.wl-card.card-f { border-left-color: #dc2626; }
+.wl-card.card-n { border-left-color: #16a34a; }
+
+@keyframes wl-card-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 카드 상단 행: [배지] [단어 + 관사] [날짜 + 삭제] */
+.wl-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 성별 배지 */
+.wl-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  min-width: 34px;
+  flex-shrink: 0;
+}
+.wl-badge-m { background: #2563eb; }
+.wl-badge-f { background: #dc2626; }
+.wl-badge-n { background: #16a34a; }
+.wl-badge-unknown { background: #94a3b8; }
+
+/* 단어 + 관사 그룹 */
+.wl-word-group {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+.wl-word {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wl-article {
+  font-size: 12px;
+  font-weight: 400;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+/* 날짜 + 삭제 버튼 */
+.wl-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.wl-date {
+  font-size: 10px;
+  color: #cbd5e1;
+  white-space: nowrap;
+}
+.wl-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: #cbd5e1;
+  padding: 4px 6px;
+  border-radius: 5px;
+  transition: color 0.12s, background 0.12s;
+  line-height: 1;
+}
+.wl-delete:hover { color: #ef4444; background: #fee2e2; }
+
+/* 뜻 (KO + EN 이중 언어) */
+.wl-defs-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.wl-defs-block.wl-defs-empty {
+  font-size: 13px;
+  color: #cbd5e1;
+}
+.wl-defs-row {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.wl-defs-lang {
+  font-size: 9px;
+  font-weight: 700;
+  color: #94a3b8;
+  background: #f1f5f9;
+  padding: 1px 5px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+.wl-defs-text {
+  color: #475569;
+}
+
+/* 문맥 문장 */
+.wl-context {
+  font-size: 12px;
+  color: #94a3b8;
+  font-style: italic;
+  border-left: 2px solid #f1f5f9;
+  padding-left: 8px;
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── 빈 상태 ─────────────────────────────────────────────────── */
+
+.wl-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #94a3b8;
+}
+.wl-empty-icon { font-size: 48px; margin-bottom: 16px; }
+.wl-empty h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+.wl-empty p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+.wl-empty strong { color: #64748b; }
+
+/* ── 반응형 ──────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .wl-header { padding: 12px 16px; }
+  .wl-main { padding: 14px 16px 30px; }
+  .wl-search { width: 160px; }
+  .wl-context { display: none; }
+}
